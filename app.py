@@ -7,7 +7,7 @@ from utils.zoom_token import *
 # Create the Flask app
 app = Flask(__name__)
 
-# Middleware to set the token and header_config in the global context
+# Middleware to set the token in header_config in the global context
 @app.before_request
 def before_request():
     token = get_token()  

@@ -19,26 +19,22 @@ Built with Flask and Zoom API.
 
 ## Getting Started
 
-Open your terminal:
+### Clone down this repository
+Open your terminal and run the following commands:
 
-# Clone down this repository
-git clone https://github.com/zoom/
+`$ git clone https://github.com/zoom/`
 
-# Navigate into the cloned project directory
-cd server-to-server-python
+### Setup
+1. In terminal, cd into the cloned repository
+`$ cd server-to-server-python`
 
-# Run pip to install the app dependencies
-pip3 install -r requirements.txt
+2. Install the app dependencies
+`$ pip3 install -r requirements.txt`
 
-## Config your app
+3. Create a .env file in the root directory and copy the values from the .env.example file and fill in the values from your Server to Server Oauth app from the Zoom Marketplace.
+`touch .env`
 
-# Create a .env file in the root directory
+4. Run the app
 
-Create a .env file in the root directory of the project and add the environment variables found in the .env.example file and fill in the values from your Server to Server Oauth app from the Zoom Marketplace.
-
-## Run the app
-
-# Run the app
-
-run python3 app.py
+`python3 app.py`
 

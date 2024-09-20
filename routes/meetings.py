@@ -92,22 +92,5 @@ def get_meeting_participants(meeting_id):
             'message': f"Error getting participants for meeting with ID: {meeting_id}"
         }), 500
 
-# Check with Engineering Granular scopes not available for this endpoint
-# Delete meeting recordings
-#https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#operation/recordingDelete
-@meetings_bp.route('/meetings/<meeting_id>/recordings', methods=['DELETE'])
-def delete_meeting_recordings(meeting_id):
-    headers=g.header_config
-    action = request.args.get('action')
-    query_params = {}
-    try:
-        response = requests.delete(f"{ZOOM_API_BASE_URL}/meetings/{meeting_id}/recordings", params=query_params, headers=headers)
-        response.raise_for_status()
-        return str(response.status_code), response.status_code
-    except requests.RequestException as err:
-        return jsonify({
-            'error': str(err),
-            'message': f"Error deleting recordings for meeting with ID: {meeting_id}"
-        }), 500
 
 
