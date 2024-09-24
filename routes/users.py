@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, Blueprint
+from flask import Flask, g, jsonify, request, Blueprint
 import requests
 from dotenv import load_dotenv
 import os
@@ -16,13 +16,7 @@ users_bp = Blueprint('users', __name__)
 # https://developers.zoom.us/docs/api/rest/reference/user/methods/#operation/users
 @users_bp.route('/users', methods=['GET'])
 def get_users():
-    token_result = get_token()
-    access_token = token_result['access_token']
-    headers = {
-        'Authorization': f'Bearer {access_token}',
-        'Content-Type': 'application/json'
-    }
-
+    headers=g.header_config
     try:
         response = requests.get(f"{ZOOM_API_BASE_URL}/users", headers=headers)
         response.raise_for_status()
@@ -38,13 +32,7 @@ def get_users():
 # https://developers.zoom.us/docs/api/rest/reference/user/methods/#operation/user
 @users_bp.route('/users/<user_id>', methods=['GET'])
 def get_user(user_id):
-    token_result = get_token()
-    access_token = token_result['access_token']
-    headers = {
-        'Authorization': f'Bearer {access_token}',
-        'Content-Type': 'application/json'
-    }
-
+    headers=g.header_config
     try:
         response = requests.get(f"{ZOOM_API_BASE_URL}/users/{user_id}", headers=headers)
         response.raise_for_status()
@@ -61,14 +49,8 @@ def get_user(user_id):
 # https://developers.zoom.us/docs/api/rest/reference/user/methods/#operation/userCreate
 @users_bp.route('/users', methods=['POST'])
 def post_user():
-    token_result = get_token()
-    access_token = token_result['access_token']
-    headers = {
-        'Authorization': f'Bearer {access_token}',
-        'Content-Type': 'application/json'
-    }
+    headers=g.header_config
     body = request.json
-
     try:
         response = requests.post(f"{ZOOM_API_BASE_URL}/users", json=body, headers=headers)
         response.raise_for_status()
@@ -85,13 +67,7 @@ def post_user():
 # https://developers.zoom.us/docs/api/rest/reference/user/methods/#operation/userSettings
 @users_bp.route('/users/<user_id>/settings', methods=['GET'])
 def get_user_settings(user_id):
-    token_result = get_token()
-    access_token = token_result['access_token']
-    headers = {
-        'Authorization': f'Bearer {access_token}',
-        'Content-Type': 'application/json'
-    }
-
+    headers=g.header_config
     try:
         response = requests.get(f"{ZOOM_API_BASE_URL}/users/{user_id}/settings", headers=headers)
         response.raise_for_status()
@@ -107,15 +83,8 @@ def get_user_settings(user_id):
 # https://developers.zoom.us/docs/api/rest/reference/user/methods/#operation/userSettingsUpdate
 @users_bp.route('/users/<user_id>/settings', methods=['PATCH'])
 def patch_user_settings(user_id):
-    token_result = get_token()
-    access_token = token_result['access_token']
-    headers = {
-        'Authorization': f'Bearer {access_token}',
-        'Content-Type': 'application/json'
-    }
-
+    headers=g.header_config
     body = request.json
-
     try:
         response = requests.patch(f"{ZOOM_API_BASE_URL}/users/{user_id}/settings", json=body, headers=headers)
         response.raise_for_status()

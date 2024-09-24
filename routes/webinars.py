@@ -17,7 +17,6 @@ webinars_bp = Blueprint('webinars', __name__)
 @webinars_bp.route('/webinars/<webinar_id>', methods=['GET'])
 def get_webinar(webinar_id):
     headers=g.header_config
-    print(f"Header config {g.header_config}")
     try:
         response = requests.get(f"{ZOOM_API_BASE_URL}/webinars/{webinar_id}", headers=headers)
         response.raise_for_status()
@@ -75,7 +74,7 @@ def delete_webinar(webinar_id):
             'message': f"Error deleting webinar with ID: {webinar_id}"
         }), 500
 
-# Get webinar panelists
+# List webinar panelists
 # https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#operation/webinarPanelists
 @webinars_bp.route('/webinars/<webinar_id>/panelists', methods=['GET'])
 def get_webinar_panelists(webinar_id):
