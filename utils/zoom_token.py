@@ -13,6 +13,7 @@ ZOOM_CLIENT_SECRET = os.getenv('ZOOM_CLIENT_SECRET')
 ZOOM_ACCOUNT_ID = os.getenv('ZOOM_ACCOUNT_ID')
 ZOOM_OAUTH_ENDPOINT = os.getenv('ZOOM_OAUTH_ENDPOINT')
 
+# Initialize cached token and expiration time variables
 cached_token = None
 token_expiration = None
 
