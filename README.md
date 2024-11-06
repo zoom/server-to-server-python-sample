@@ -48,7 +48,7 @@ Note: If you add additional API routes to this starter app, you may need to add 
 
 ### Clone this repository
 Open your terminal and run the following command:
-`$ git clone https://github.com/zoom/`
+`$ git clone https://github.com/zoom/server-to-server-python-sample`
 
 ### Setup
 1. In terminal, navigate into repository:
@@ -59,6 +59,8 @@ Open your terminal and run the following command:
 
 3. Create a .env file in the root directory. Copy the values from the .env.example file and fill in your Server-to-Server OAuth app credentials from the Zoom Marketplace:
 `touch .env`
+
+> :warning: **Do not store credentials in plain text on production environments**
 
 4. Run the app:
 `python3 app.py`
