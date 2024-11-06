@@ -5,7 +5,7 @@ import os
 
 #  Load and access environment variables from .env
 load_dotenv()     
-ZOOM_API_BASE_URL = os.getenv('ZOOM_API_BASE_URL')
+ZOOM_API_BASE_URL = "https://api.zoom.us/v2"
 
 # Create a Blueprint for the meetings routes
 meetings_bp = Blueprint('meetings', __name__)
